@@ -1,0 +1,43 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Realtime Chat</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-200">
+    <div class="container mx-auto p-4">
+        <ul id="messages" class="border rounded-lg p-4 max-h-48 overflow-y-auto"></ul>
+        <input id="inputMessage" class="border rounded p-2 w-full mt-2" type="text" placeholder="Type a message...">
+        <button onclick="sendMessage()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">Send</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        socket.on('message', function(data) {
+            appendMessage(data);
+        });
+
+        function sendMessage() {
+            const messageInput = document.getElementById('inputMessage');
+            const message = messageInput.value;
+            if (message.trim() !== '') {
+                socket.emit('message', message);
+                appendMessage('You: ' + message);
+                messageInput.value = '';
+            }
+        }
+
+        function appendMessage(message) {
+            const messages = document.getElementById('messages');
+            const li = document.createElement('li');
+            li.appendChild(document.createTextNode(message));
+            messages.appendChild(li);
+        }
+    </script>
+</body>
+</html>
