@@ -8,7 +8,7 @@ body {
 }
 
 .background {
-    width: 100vw;
+    width: 110vh;
     height: 100vh;
     background: linear-gradient(75deg, rgb(40,43,54) 0%, rgb(40,43,54) 50%, rgba(40,43,54,0.8) 100%);
     /* Vertical center */
@@ -110,4 +110,15 @@ body {
     font-family: Red hat Display, sans-serif;
     font-weight: 400;
     letter-spacing: 0.025em;
+}
+.login-body{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(75deg, rgb(40,43,54) 0%, rgb(40,43,54) 50%, rgba(40,43,54,0.8) 100%);
+    /* Vertical center */
+    display: table-cell;
+    vertical-align: middle;
+}
+.login-body.social-button{
+    width:20px;
 }

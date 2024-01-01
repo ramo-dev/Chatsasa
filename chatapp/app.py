@@ -24,6 +24,13 @@ class Message(db.Model):
     content = db.Column(db.String(500), nullable=False)
     read = db.Column(db.Boolean, default=False)
 
+class DirectMessage(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    sender = db.Column(db.String(50), nullable=False)
+    receiver = db.Column(db.String(50), nullable=False)
+    content = db.Column(db.String(500), nullable=False)
+    read = db.Column(db.Boolean, default=False)
+
 # Create Tables
 with app.app_context():
     db.create_all()
@@ -93,18 +100,18 @@ def chat():
 
 @socketio.on('connect')
 def handle_connect():
-    # Add the connected user to the online_users set
     if 'username' in session:
+        # Add the connected user to the online_users set
         online_users.add(session['username'])
-        emit('online_users', list(online_users), broadcast=True)
+        # Broadcast to all users except the connected user that someone has joined
+        emit('online_users', list(online_users.difference([session['username']])), broadcast=True)
 
 @socketio.on('disconnect')
 def handle_disconnect():
-    # Remove the disconnected user from the online_users set
     if 'username' in session and session['username'] in online_users:
+        # Remove the disconnected user from the online_users set
         online_users.remove(session['username'])
         emit('online_users', list(online_users), broadcast=True)
-
 
 @socketio.on('message')
 def handle_message(data):
@@ -117,12 +124,27 @@ def handle_message(data):
         db.session.commit()
         emit('message', data, broadcast=True)
 
-# Socket IO 'message-read' event handler to update read status
-@socketio.on('message-read')
-def handle_message_read(message_id):
-    message = Message.query.get(message_id)
-    if message:
-        message.read = True
+# Add logic to handle direct messages in the same way as messages
+@socketio.on('direct-message')
+def handle_direct_message(data):
+    sender = data.get('sender')
+    receiver = data.get('receiver')
+    content = data.get('content')
+
+    if sender and receiver and content:
+        new_direct_message = DirectMessage(sender=sender, receiver=receiver, content=content)
+        db.session.add(new_direct_message)
+        db.session.commit()
+        
+        # Emit the direct message to the specific receiver
+        emit('direct-message', data, room=receiver)
+
+# Socket IO 'direct-message-read' event handler to update read status for direct messages
+@socketio.on('direct-message-read')
+def handle_direct_message_read(direct_message_id):
+    direct_message = DirectMessage.query.get(direct_message_id)
+    if direct_message:
+        direct_message.read = True
         db.session.commit()
 
 
