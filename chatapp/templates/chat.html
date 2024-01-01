@@ -43,7 +43,7 @@
         .user-status-dot {
             width: 12px;
             height: 12px;
-            background-color: #ffc107;
+            background-color: #41ff07;
             border-radius: 50%;
             margin-left: auto;
             margin-right: 10px;
@@ -90,7 +90,7 @@
     <div class="container mt-5 background">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h1 class="text-center mb-4 text-warning">Welcome to the Chat Room</h1>
+                <h1 class="text-center mb-4 text-warning">Welcome to the Chat Room "{{ session['username'] }}"</h1>
                 <button class="btn btn-primary mb-3" onclick="toggleChatSidebar()">Toggle DM</button>
                 <button class="btn btn-danger mb-3" onclick="logout()">Logout</button>
 
