@@ -6,3 +6,5 @@ MarkupSafe
 requests
 Werkzeug
 flask_socketio
+flask_sqlalchemy
+Flask-SQLAlchemy
