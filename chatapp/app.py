@@ -44,10 +44,11 @@ def login():
             user = User.query.filter_by(username=username, password=password).first()
             if user:
                 session['username'] = user.username
-                return redirect(url_for('chat'))
+                return redirect(url_for('welcome'))  # Redirect to welcome.html after successful login
             return render_template('index.html', error='Invalid credentials')
         return render_template('index.html', error='Missing username or password')
     return render_template('login.html')
+
 
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
@@ -62,10 +63,18 @@ def signup():
             new_user = User(username=username, password=password)
             db.session.add(new_user)
             db.session.commit()
-            session['username'] = new_user.username
-            return redirect(url_for('chat'))
+            # Redirect to login page after successful signup
+            return redirect(url_for('login'))
         return render_template('index.html', error='Missing username or password')
     return render_template('signup.html')
+
+
+@app.route('/welcome')
+def welcome():
+    if 'username' not in session:
+        return redirect(url_for('index'))
+    return render_template('welcome.html')  # Render the welcome.html page for logged-in users
+
 
 
 @app.route('/logout')
@@ -118,4 +127,4 @@ def handle_message_read(message_id):
 
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    socketio.run(app, debug=True,port=5001)
