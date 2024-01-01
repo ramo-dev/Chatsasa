@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <title>Chat</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="container mt-5 background">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h1 class="text-center mb-4">Welcome to the Chat Room</h1>
+                <h1 class="text-center mb-4 text-warning">Welcome to the Chat Room</h1>
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Online Users</h5>
-                                <ul id="onlineUsers" class="list-group"></ul>
+                        <div class="card bg-dark">
+                            <div class="card-body ">
+                                <h5 class="card-title ">Online Users</h5>
+                                <ul id="onlineUsers" class="list-group bg-success"></ul>
                             </div>
+                            <button onclick="logout()" class="btn btn-danger mx-5 mb-2 p-2">Logout</button>
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -89,6 +91,13 @@
         function markAsRead(messageId) {
             socket.emit('message-read', messageId);
         }
+        function logout() {
+            // Emit a logout event to the server
+            socket.emit('logout');
+            // Redirect to the logout route on the server
+            window.location.href = '/logout';
+        }
+
     </script>
 </body>
 </html>
