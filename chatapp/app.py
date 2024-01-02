@@ -97,21 +97,39 @@ def chat():
     # Pass the online users to the template
     return render_template('chat.html', online_users=online_users)
 
+session_users = {}
 
 @socketio.on('connect')
 def handle_connect():
     if 'username' in session:
-        # Add the connected user to the online_users set
-        online_users.add(session['username'])
-        # Broadcast to all users except the connected user that someone has joined
-        emit('online_users', list(online_users.difference([session['username']])), broadcast=True)
+        if session['username'] not in session_users:
+            session_users[session['username']] = set()
+        session_users[session['username']].add(session['username'])
+        
+        # Broadcast online users to everyone in the session except the current user
+        current_user_username = session['username']
+        users_in_session = set(session_users.keys()) - {session['username']}
+        online_users_in_session = set()
+        for user in users_in_session:
+            online_users_in_session.update(session_users[user])
+        
+        emit('online_users', list(online_users_in_session), room=request.sid)
 
 @socketio.on('disconnect')
 def handle_disconnect():
-    if 'username' in session and session['username'] in online_users:
-        # Remove the disconnected user from the online_users set
-        online_users.remove(session['username'])
-        emit('online_users', list(online_users), broadcast=True)
+    if 'username' in session and session['username'] in session_users:
+        if session['username'] in session_users:
+            session_users[session['username']].remove(session['username'])
+        
+        # Broadcast online users to everyone in the session except the current user
+        current_user_username = session['username']
+        users_in_session = set(session_users.keys()) - {session['username']}
+        online_users_in_session = set()
+        for user in users_in_session:
+            online_users_in_session.update(session_users[user])
+        
+        emit('online_users', list(online_users_in_session), room=request.sid)
+        emit('online_users', list(session_users[current_user_username]), room=request.sid)
 
 @socketio.on('message')
 def handle_message(data):
