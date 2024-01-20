@@ -1,0 +1,170 @@
+repo_name: ramo-dev/Chatsasa
+report_id: e9cbb96d7085dda1fa968d3e9952ca85
+version: 0.1
+repo_type: Public
+timestamp: '2024-01-20T19:58:50+00:00'
+requested_by: ramo-dev
+provider: github
+branch: main
+detected_tools_count: 13
+tools:
+- name: CSS 3
+  description: The latest evolution of the Cascading Style Sheets language
+  website_url: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/6727/css.png
+  detection_source_url: https://github.com/ramo-dev/Chatsasa
+  detection_source: Repo Metadata
+- name: Jinja
+  description: Full featured template engine for Python
+  website_url: https://palletsprojects.com/p/jinja/
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Templating Languages & Extensions
+  image_url: https://img.stackshare.io/service/2303/New_Project__20_.png
+  detection_source_url: https://github.com/ramo-dev/Chatsasa/blob/main/chatapp/requirements.txt
+  detection_source: chatapp/requirements.txt
+  last_updated_by: ramo-dev
+  last_updated_on: 2024-01-01 13:47:26.000000000 Z
+- name: Python
+  description: A clear and powerful object-oriented programming language, comparable
+    to Perl, Ruby, Scheme, or Java.
+  website_url: https://www.python.org
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/993/pUBY5pVj.png
+  detection_source_url: https://github.com/ramo-dev/Chatsasa
+  detection_source: Repo Metadata
+- name: SQLAlchemy
+  description: The Python SQL Toolkit and Object Relational Mapper
+  website_url: http://www.sqlalchemy.org/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Object Relational Mapper (ORM)
+  image_url: https://img.stackshare.io/service/1839/q5uAkmy7.png
+  detection_source_url: https://github.com/ramo-dev/Chatsasa/blob/main/chatapp/requirements.txt
+  detection_source: chatapp/requirements.txt
+  last_updated_by: ramo-dev
+  last_updated_on: 2024-01-01 14:02:44.000000000 Z
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/ramo-dev/Chatsasa
+  detection_source: Repo Metadata
+- name: PyPI
+  description: A repository of software for the Python programming language
+  website_url: https://pypi.org/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Hosted Package Repository
+  image_url: https://img.stackshare.io/service/12572/-RIWgodF_400x400.jpg
+  detection_source_url: https://github.com/ramo-dev/Chatsasa/blob/main/chatapp/requirements.txt
+  detection_source: chatapp/requirements.txt
+  last_updated_by: ramo-dev
+  last_updated_on: 2024-01-01 13:47:26.000000000 Z
+- name: Flask
+  description: A simple framework for building complex web applications
+  package_url: https://pypi.org/project/Flask
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19834/default_58dbe7b4d7ec447b62773209af0f9a31bbabf5bd.png
+  detection_source_url: https://github.com/ramo-dev/Chatsasa/blob/main/chatapp/requirements.txt
+  detection_source: chatapp/requirements.txt
+  last_updated_by: ramo-dev
+  last_updated_on: 2024-01-01 14:02:44.000000000 Z
+- name: Flask-SQLAlchemy
+  description: Adds SQLAlchemy support to your Flask application
+  package_url: https://pypi.org/project/Flask-SQLAlchemy
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19941/default_aacb529ceff756b62765790d8d6787a041d514ff.png
+  detection_source_url: https://github.com/ramo-dev/Chatsasa/blob/main/chatapp/requirements.txt
+  detection_source: chatapp/requirements.txt
+  last_updated_by: ramo-dev
+  last_updated_on: 2024-01-01 14:02:44.000000000 Z
+- name: MarkupSafe
+  description: Safely add untrusted strings to HTML/XML markup
+  package_url: https://pypi.org/project/MarkupSafe
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19945/default_0b0a94e1bdf3e64deeccb23892ca2335bdc30e4f.png
+  detection_source_url: https://github.com/ramo-dev/Chatsasa/blob/main/chatapp/requirements.txt
+  detection_source: chatapp/requirements.txt
+  last_updated_by: ramo-dev
+  last_updated_on: 2024-01-01 13:47:26.000000000 Z
+- name: Werkzeug
+  description: The comprehensive WSGI web application library
+  package_url: https://pypi.org/project/Werkzeug
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19890/default_87fc2af3f2409064833512bb6fc5b04443a2e6aa.png
+  detection_source_url: https://github.com/ramo-dev/Chatsasa/blob/main/chatapp/requirements.txt
+  detection_source: chatapp/requirements.txt
+  last_updated_by: ramo-dev
+  last_updated_on: 2024-01-01 13:47:26.000000000 Z
+- name: click
+  description: Composable command line interface toolkit
+  package_url: https://pypi.org/project/click
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19830/default_74a61b43bdb9fc0cba2978316b9976f43545029b.png
+  detection_source_url: https://github.com/ramo-dev/Chatsasa/blob/main/chatapp/requirements.txt
+  detection_source: chatapp/requirements.txt
+  last_updated_by: ramo-dev
+  last_updated_on: 2024-01-01 13:47:26.000000000 Z
+- name: itsdangerous
+  description: Various helpers to pass data to untrusted environments and back
+  package_url: https://pypi.org/project/itsdangerous
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19989/default_b1f1fc9c4c59a78443018e01395203ba8c61dcde.png
+  detection_source_url: https://github.com/ramo-dev/Chatsasa/blob/main/chatapp/requirements.txt
+  detection_source: chatapp/requirements.txt
+  last_updated_by: ramo-dev
+  last_updated_on: 2024-01-01 13:47:26.000000000 Z
+- name: requests
+  description: Python HTTP for Humans
+  package_url: https://pypi.org/project/requests
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19826/default_d7c684bf2673f008a9f02ac93901229297a22d7e.png
+  detection_source_url: https://github.com/ramo-dev/Chatsasa/blob/main/chatapp/requirements.txt
+  detection_source: chatapp/requirements.txt
+  last_updated_by: ramo-dev
+  last_updated_on: 2024-01-01 13:47:26.000000000 Z
